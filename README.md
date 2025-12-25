@@ -11,10 +11,6 @@ This repository contains configuration files for:
   - Custom scripts for application launching
   - Hypridle, hyprlock, and hyprsunset configs
   
-- **omadora/** - Omadora-specific configurations
-  - Branding and theme files
-  - Theme collections (Catppuccin, Gruvbox, Tokyo Night, Rose Pine, etc.)
-  
 - **waybar/** - Status bar configuration
   - Custom styling and modules
   
