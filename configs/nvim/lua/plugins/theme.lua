@@ -1,0 +1,1 @@
+/home/mlopes/.config/omarchy/current/theme/neovim.lua

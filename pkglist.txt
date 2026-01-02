@@ -1,0 +1,41 @@
+# --- Hardware & Drivers ---
+linux-g14
+linux-g14-headers
+asusctl
+power-profiles-daemon
+brightnessctl
+vulkan-tools
+nvidia-utils
+lib32-nvidia-utils
+egl-wayland
+libva-nvidia-driver
+
+# --- Core Tools & Dotfiles ---
+chezmoi
+bash-completion
+gum
+git
+
+# --- TUI Utilities ---
+iptstate
+netscanner
+lazyjournal
+dive
+ncdu
+wget
+tmux
+bluetui
+fzf
+
+# --- Btrfs & Storage ---
+btrfs-assistant
+snapper
+nautilus-share
+samba
+
+# --- GUI Applications ---
+firefox
+steam
+bitwarden
+bitwarden-cli
+visual-studio-code-bin
