@@ -6,7 +6,7 @@ set -e
 echo "Detecting hardware..."
 PRODUCT_NAME=$(sudo dmidecode -s system-product-name 2>/dev/null || echo "Unknown")
 IS_ASUS_G14=false
-
+USERNAME=$USER
 # Check if this is an ASUS G14 (matches various G14 models)
 if echo "$PRODUCT_NAME" | grep -qiE "ROG.*G14|GA40[0-9]"; then
     IS_ASUS_G14=true
@@ -27,6 +27,12 @@ if [ "$IS_ASUS_G14" = true ]; then
 SigLevel = Optional TrustAll
 Server = https://arch.asus-linux.org
 EOF'
+    echo "Updating Brightness controls"
+    if ! grep -q "\asus\]" $HOME/.config/hypr/hyprland.conf; then
+        sudo bash -c 'cat <<EOF >> /$HOME/.config/hypr/hyprland.conf
+source = ~/.config/hypr/asus-specific.conf'
+    else 
+      sed -i 's/^# \(source = ~\/\.config\/hypr\/asus-specific\.conf\)/\1/' ~/.dotfiles/configs/hypr/hyprland.conf
     fi
 else
     echo "Skipping ASUS G14 repository (not G14 hardware)..."
@@ -48,11 +54,11 @@ sudo systemctl restart systemd-networkd systemd-resolved
 
 # 4. PRIVILEGED ACCESS (SUDOERS)
 echo "Setting up NOPASSWD for TUI Network tools..."
-sudo bash -c "cat <<EOF > /etc/sudoers.d/00_mlopes
+sudo bash -c "cat <<EOF > /etc/sudoers.d/00_$(USER)
 mlopes ALL=(ALL) ALL
 mlopes ALL=(ALL:ALL) NOPASSWD: /usr/sbin/ufw, /usr/bin/tufw, /usr/bin/iptstate, /usr/bin/netscanner
 EOF"
-sudo chmod 0440 /etc/sudoers.d/00_mlopes
+sudo chmod 0440 /etc/sudoers.d/00_$(USER)
 
 # 5. BULK PACKAGE INSTALLATION
 echo "Installing software from pkglist.txt..."
@@ -72,7 +78,7 @@ sudo pacman -S --needed --noconfirm qemu-full virt-manager virt-viewer dnsmasq v
     openbsd-netcat freerdp libvirt nvidia-container-toolkit dmidecode
 sudo systemctl enable --now libvirtd
 sudo usermod -aG libvirt,kvm "$USER"
-[ ! -d "$HOME/.local/share/winapps" ] && git clone https://github.com/winapps-org/winapps.git ~/.local/share/winapps
+[ ! -d "$HOME/.local/share/winapps" ] && git clone https://github.com/winapps-org/winapps.git ~/.local/share/winapps-src
 
 # 7. DOTFILES DEPLOYMENT (CHEZMOI)
 echo "Deploying configs with chezmoi..."

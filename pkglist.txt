@@ -2,8 +2,10 @@
 linux-g14
 linux-g14-headers
 asusctl
+supergfxctl
 power-profiles-daemon
 brightnessctl
+nvidia-dkms
 vulkan-tools
 nvidia-utils
 lib32-nvidia-utils
