@@ -1,0 +1,16 @@
+# =========================================
+# G14 PROFILE - ASUS ROG Zephyrus G14
+# Hardware-specific packages
+# =========================================
+
+# --- Kernel (ASUS G14 custom) ---
+linux-g14
+linux-g14-headers
+
+# --- NVIDIA Driver (proprietary DKMS) ---
+nvidia-dkms
+
+# --- ASUS G14 Tools ---
+asusctl
+supergfxctl
+rog-control-center

@@ -1,0 +1,21 @@
+# =========================================
+# DESKTOP PROFILE - ROG Crosshair VIII Impact + RTX 3080
+# Hardware-specific packages
+# =========================================
+
+# --- Kernel (standard) ---
+linux
+linux-headers
+
+# --- NVIDIA Driver (open kernel module, preferred for Turing+) ---
+nvidia-open-dkms
+nvidia-settings
+
+# --- Fan / Thermal Control ---
+# GPU fans not connected directly; controlled via NCT6798 sensor
+# using coolercontrol (GPU_MOBO_FAN profile → NCT6798/FAN 1)
+coolercontrol
+
+# --- Peripherals ---
+ckb-next
+# xpadneo-dkms-git  # AUR: Xbox wireless controller support

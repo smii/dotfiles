@@ -1,0 +1,11 @@
+# =========================================
+# GENERIC PROFILE - Any compatible system
+# Hardware-specific packages
+# =========================================
+
+# --- Kernel (standard) ---
+linux
+linux-headers
+
+# --- NVIDIA Driver (proprietary DKMS, broadest compatibility) ---
+nvidia-dkms
