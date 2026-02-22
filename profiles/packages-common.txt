@@ -5,7 +5,8 @@
 # --- Drivers (GPU-agnostic) ---
 power-profiles-daemon
 brightnessctl
-vulkan-tools
+mesa
+lib32-mesa
 
 # --- Core Tools & Dotfiles ---
 chezmoi

@@ -235,11 +235,13 @@ if [[ -f "$DOTFILES/scripts/link.sh" ]]; then
     bash "$DOTFILES/scripts/link.sh"
 fi
 
-# Chezmoi deployment (if using chezmoi templates)
-if command -v chezmoi &>/dev/null && [[ -d "$DOTFILES/configs" ]]; then
+# Chezmoi deployment (only if chezmoi templates exist in the dotfiles)
+if command -v chezmoi &>/dev/null && [[ -f "$DOTFILES/configs/.chezmoiroot" || -f "$DOTFILES/configs/.chezmoi.toml.tmpl" ]]; then
     echo "Deploying configs with chezmoi..."
     chezmoi init --source "$DOTFILES/configs"
     chezmoi apply --force
+else
+    echo "→ Skipping chezmoi (no chezmoi templates found)"
 fi
 
 # Reload Hyprland if running
