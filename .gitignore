@@ -1,0 +1,10 @@
+# Runtime symlinks created by scripts/link.sh (machine-specific, not portable)
+configs/hypr/profile
+configs/waybar/config.jsonc
+
+# Neovim theme symlink managed by omarchy (points to system path)
+configs/nvim/lua/plugins/theme.lua
+configs/nvim/nvim/lua/plugins/theme.lua
+
+# Active profile marker
+.active-profile
