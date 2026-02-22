@@ -9,6 +9,10 @@ linux-g14-headers
 
 # --- NVIDIA Driver (proprietary DKMS) ---
 nvidia-dkms
+nvidia-utils
+lib32-nvidia-utils
+egl-wayland
+libva-nvidia-driver
 
 # --- ASUS G14 Tools ---
 asusctl

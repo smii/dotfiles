@@ -55,7 +55,7 @@ case "$PROFILE" in
     generic)
         echo "  System:  Generic / Unknown hardware"
         echo "  Kernel:  linux (standard)"
-        echo "  GPU:     NVIDIA (auto)"
+        echo "  GPU:     Default (mesa/modesetting)"
         echo "  Monitors: Auto-detect"
         ;;
 esac
@@ -216,8 +216,8 @@ echo "✓ SSH daemon enabled"
 # ==========================================
 echo ""
 echo "Configuring QEMU/KVM..."
-sudo pacman -S --needed --noconfirm qemu-full virt-manager virt-viewer dnsmasq vde2 bridge-utils \
-    openbsd-netcat freerdp libvirt nvidia-container-toolkit
+sudo pacman -S --needed --noconfirm qemu-full virt-manager virt-viewer dnsmasq vde2 \
+    openbsd-netcat freerdp libvirt
 sudo systemctl enable --now libvirtd
 sudo usermod -aG libvirt,kvm "$REAL_USER"
 

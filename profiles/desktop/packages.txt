@@ -10,6 +10,11 @@ linux-headers
 # --- NVIDIA Driver (open kernel module, preferred for Turing+) ---
 nvidia-open-dkms
 nvidia-settings
+nvidia-utils
+lib32-nvidia-utils
+egl-wayland
+libva-nvidia-driver
+nvidia-container-toolkit
 
 # --- Fan / Thermal Control ---
 # GPU fans not connected directly; controlled via NCT6798 sensor
