@@ -40,7 +40,7 @@ freerdp
 
 # --- GUI Applications ---
 firefox
-steam
+# steam  # Not default; pulls vulkan-driver (GPU-specific). Add per-profile if needed.
 bitwarden
 bitwarden-cli
 visual-studio-code-bin

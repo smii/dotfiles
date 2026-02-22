@@ -24,3 +24,6 @@ coolercontrol
 # --- Peripherals ---
 ckb-next
 # xpadneo-dkms-git  # AUR: Xbox wireless controller support
+
+# --- Gaming ---
+steam

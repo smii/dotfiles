@@ -18,3 +18,6 @@ libva-nvidia-driver
 asusctl
 supergfxctl
 rog-control-center
+
+# --- Gaming ---
+steam
