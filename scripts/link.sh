@@ -85,9 +85,9 @@ fi
 echo ""
 echo "Applying profile: $DOTFILES_PROFILE"
 
-# Hyprland profile: configs/hypr/profile → profiles/<name>/hypr (absolute)
+# Hyprland profile: configs/hypr/profile → profiles/<name>/hypr (relative)
 HYPR_PROFILE_LINK="$CONFIGS/hypr/profile"
-HYPR_PROFILE_TARGET="$PROFILES/$DOTFILES_PROFILE/hypr"
+HYPR_PROFILE_REL="../../profiles/$DOTFILES_PROFILE/hypr"
 
 if [[ -L "$HYPR_PROFILE_LINK" ]]; then
     rm "$HYPR_PROFILE_LINK"
@@ -96,12 +96,12 @@ if [[ -e "$HYPR_PROFILE_LINK" ]]; then
     echo "✗ $HYPR_PROFILE_LINK exists but is not a symlink - please remove manually"
 else
     echo "→ Linking hypr profile → $DOTFILES_PROFILE"
-    ln -s "$HYPR_PROFILE_TARGET" "$HYPR_PROFILE_LINK"
+    ln -s "$HYPR_PROFILE_REL" "$HYPR_PROFILE_LINK"
 fi
 
-# Waybar profile: configs/waybar/config.jsonc → profiles/<name>/waybar/config.jsonc (absolute)
+# Waybar profile: configs/waybar/config.jsonc → profiles/<name>/waybar/config.jsonc (relative)
 WAYBAR_CONFIG="$CONFIGS/waybar/config.jsonc"
-WAYBAR_PROFILE_TARGET="$PROFILES/$DOTFILES_PROFILE/waybar/config.jsonc"
+WAYBAR_PROFILE_REL="../../profiles/$DOTFILES_PROFILE/waybar/config.jsonc"
 
 if [[ -L "$WAYBAR_CONFIG" ]]; then
     rm "$WAYBAR_CONFIG"
@@ -111,7 +111,7 @@ if [[ -f "$WAYBAR_CONFIG" && ! -L "$WAYBAR_CONFIG" ]]; then
     mv "$WAYBAR_CONFIG" "${WAYBAR_CONFIG}.bak.$(date +%s)"
 fi
 echo "→ Linking waybar config → $DOTFILES_PROFILE"
-ln -s "$WAYBAR_PROFILE_TARGET" "$WAYBAR_CONFIG"
+ln -s "$WAYBAR_PROFILE_REL" "$WAYBAR_CONFIG"
 
 # ==========================================
 # Save active profile
@@ -120,6 +120,6 @@ echo "$DOTFILES_PROFILE" > "$DOTFILES/.active-profile"
 
 echo ""
 echo "✔ All configs linked (profile: $DOTFILES_PROFILE)"
-echo "  Hypr profile: $HYPR_PROFILE_LINK → $HYPR_PROFILE_TARGET"
-echo "  Waybar config: $WAYBAR_CONFIG → $WAYBAR_PROFILE_TARGET"
+echo "  Hypr profile: configs/hypr/profile → $HYPR_PROFILE_REL"
+echo "  Waybar config: configs/waybar/config.jsonc → $WAYBAR_PROFILE_REL"
 
