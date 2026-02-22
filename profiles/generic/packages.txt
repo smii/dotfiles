@@ -7,5 +7,6 @@
 linux
 linux-headers
 
-# --- NVIDIA Driver (proprietary DKMS, broadest compatibility) ---
-nvidia-dkms
+# --- GPU ---
+# No GPU-specific driver assumed; uses kernel's default (mesa/modesetting).
+# Add nvidia-dkms, xf86-video-amdgpu, etc. manually if needed.
