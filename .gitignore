@@ -8,3 +8,6 @@ configs/nvim/nvim/lua/plugins/theme.lua
 
 # Active profile marker
 .active-profile
+
+# Aether shaders
+ configs/hypr/shaders/
