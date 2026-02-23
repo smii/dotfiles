@@ -170,10 +170,9 @@ Quick access to frequently used apps via special workspaces:
 | Keybinding | App | Description |
 | :--- | :--- | :--- |
 | `Super + A` | Gemini | Toggle Gemini AI assistant |
-| `Super + M` | Gmail | Toggle Gmail scratchpad |
-| `Super + Alt + M` | Google Calendar | Toggle Calendar scratchpad |
-| `Super + Alt + K` | Google Keep | Toggle Keep notes scratchpad |
-| `Super + Shift + M` | Spotify | Toggle Spotify music player |
+| `Super + M` | Gmail | Toggle Gmail |
+| `Super + Alt + M` | Google Calendar | Toggle Calendar |
+| `Super + S` | Spotify | Toggle Spotify music player |
 
 ---
 
