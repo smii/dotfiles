@@ -10,4 +10,4 @@ configs/nvim/nvim/lua/plugins/theme.lua
 .active-profile
 
 # Aether shaders
- configs/hypr/shaders/
+configs/hypr/shaders
