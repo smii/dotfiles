@@ -1,11 +1,11 @@
-# Omarchy Dotfiles (Multi-System)
+# Dotfiles (Multi-System)
 
-Personal Arch Linux (Omarchy) dotfiles with **automatic hardware profiling**. One repo, multiple machines — the installer detects hardware and applies the right kernel, drivers, monitor layout, idle behavior, and waybar modules.
+Personal Arch Linux Hyprland dotfiles with **automatic hardware profiling**. One repo, multiple machines — the installer detects hardware and applies the right kernel, drivers, monitor layout, idle behavior, and waybar modules.
 
 > **Supported Systems:**
 > - **ASUS ROG Zephyrus G14** — G14 kernel, hybrid GPU (AMD + NVIDIA), battery, touchpad, OLED brightness
 > - **ROG Crosshair VIII Impact + RTX 3080** — Desktop, dual monitor (4K + QHD portrait), CoolerControl GPU fan management
-> - **Generic** — Any Arch/Omarchy system with auto-detect monitors and sane defaults
+> - **Generic** — Any Arch Linux system with auto-detect monitors and sane defaults
 
 > 🔄 **Installing Dual-Boot?** See the complete step-by-step guide: [DUALBOOT-GUIDE.md](DUALBOOT-GUIDE.md)
 
@@ -17,8 +17,19 @@ Personal Arch Linux (Omarchy) dotfiles with **automatic hardware profiling**. On
 ├── pkglist.txt                   # Legacy package list (reference only)
 ├── configs/                      # Shared configs (symlinked to ~/.config/)
 │   ├── hypr/                     # Hyprland (shared settings)
-│   │   ├── hyprland.conf         # Main config (sources profile/)
-│   │   ├── bindings.conf         # Key bindings (shared)
+│   │   ├── hyprland.conf         # Main config (sources base/ + profile/)
+│   │   ├── base/                 # Standalone base configs
+│   │   │   ├── autostart.conf    # Wallpaper, bar, notifications, clipboard
+│   │   │   ├── bindings-media.conf    # Volume, brightness, media keys
+│   │   │   ├── bindings-clipboard.conf # Clipboard history (cliphist)
+│   │   │   ├── bindings-tiling.conf   # Window/workspace management
+│   │   │   ├── bindings-utilities.conf # Launcher, screenshot, lock
+│   │   │   ├── envs.conf         # Wayland env vars
+│   │   │   ├── input.conf        # Default input settings
+│   │   │   ├── looknfeel.conf    # Catppuccin Mocha theme
+│   │   │   ├── theme.conf        # Color palette variables
+│   │   │   └── windows.conf      # Default window rules
+│   │   ├── bindings.conf         # Key bindings (personal overrides)
 │   │   ├── envs.conf             # Wayland env vars (shared)
 │   │   ├── input.conf            # Keyboard/touchpad (shared)
 │   │   ├── looknfeel.conf        # Theme/layout (shared)
@@ -85,7 +96,7 @@ The `install.sh` script auto-detects hardware and applies the correct profile:
 6. **Sudoers** — Grants `NOPASSWD` for TUI tools (`ufw`, `tufw`, `iptstate`, `netscanner`).
 7. **Virtualization** — Sets up QEMU/KVM + libvirt.
 8. **Dotfile Deployment** — Runs `link.sh` to symlink configs and profile overlays.
-9. **Cleanup** — Runs `omarchy-cleaner` to remove default bloatware.
+9. **Post-Install Cleanup** — Optional package removal.
 
 ### Profile Override
 
@@ -157,7 +168,7 @@ Packages are split into **common** (all systems) and **profile-specific**:
 | **Monitors** | eDP-1 2880×1800 OLED | DP-1 4K + DP-2 QHD portrait | Auto-detect |
 | **Brightness** | amdgpu_bl1 keys | N/A (external) | N/A |
 | **Battery** | Waybar module | — | Waybar module |
-| **Idle** | Screensaver → Lock → DPMS → Suspend | Screensaver → Lock → DPMS | Screensaver → Lock → DPMS |
+| **Idle** | Lock → DPMS → Suspend | Lock → DPMS | Lock → DPMS |
 | **GPU Temp** | — | Waybar module (nvidia-smi) | — |
 | **NVIDIA Env** | — (hybrid via supergfxctl) | `LIBVA_DRIVER_NAME`, `GBM_BACKEND` | — |
 

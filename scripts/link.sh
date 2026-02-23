@@ -55,6 +55,26 @@ link nvim
 link winapps
 
 # ==========================================
+# Deploy shell config (bashrc)
+# ==========================================
+BASHRC_SRC="$DOTFILES/shell/bash/.bashrc"
+BASHRC_DEST="$HOME/.bashrc"
+
+if [[ -f "$BASHRC_SRC" ]]; then
+    if [[ -L "$BASHRC_DEST" ]]; then
+        echo "→ .bashrc symlink already exists"
+    elif [[ -f "$BASHRC_DEST" && ! -L "$BASHRC_DEST" ]]; then
+        echo "→ Backing up existing .bashrc"
+        mv "$BASHRC_DEST" "${BASHRC_DEST}.bak.$(date +%s)"
+        ln -s "$BASHRC_SRC" "$BASHRC_DEST"
+        echo "→ Linked .bashrc"
+    else
+        ln -s "$BASHRC_SRC" "$BASHRC_DEST"
+        echo "→ Linked .bashrc"
+    fi
+fi
+
+# ==========================================
 # Deploy SSH config (not a symlink — copied with correct perms)
 # ==========================================
 SSH_SRC="$DOTFILES/configs/ssh"

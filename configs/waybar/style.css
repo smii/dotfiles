@@ -1,4 +1,14 @@
-@import "../omarchy/current/theme/waybar.css";
+/* Catppuccin Mocha theme colors (standalone, no Omarchy) */
+@define-color background #1e1e2e;
+@define-color foreground #cdd6f4;
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color blue #89b4fa;
+@define-color mauve #cba6f7;
+@define-color red #f38ba8;
+@define-color green #a6e3a1;
+@define-color yellow #f9e2af;
+@define-color peach #fab387;
 
 * {
   background-color: @background;
@@ -33,7 +43,7 @@
 #cpu,
 #battery,
 #pulseaudio,
-#custom-omarchy,
+#custom-launcher,
 #custom-screenrecording-indicator,
 #custom-update {
   min-width: 12px;

@@ -34,11 +34,10 @@ services:
     volumes:
       - data:/storage # Mount volume 'data' to use as Windows 'C:' drive.
       - ${HOME}:/shared # Mount Linux user home directory @ '\\host.lan\Data'.
-      #- /path/to/second/hard/disk:/storage2 # Uncomment to create a virtual second hard disk and mount it within the Windows VM. Ensure 'DISK2_SIZE' is specified above.
       - ./oem:/oem # Enables automatic post-install execution of 'oem/install.bat', applying Windows registry modifications contained within 'oem/RDPApps.reg'.
       # Custom Windows 10 ISO from Google Drive (downloaded by setup-winapps.sh)
       # Path placeholder is replaced by scripts/setup-winapps.sh at deploy time
-      - #ISO_PATH_PLACEHOLDER:/custom.iso
+      # - /path/to/custom.iso:/custom.iso
     devices:
       - /dev/kvm # Enable KVM.
       - /dev/net/tun # Enable tuntap

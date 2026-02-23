@@ -276,11 +276,10 @@ if [[ -f "$DOTFILES/scripts/setup-winapps.sh" ]]; then
 fi
 
 # ==========================================
-# 12. SYSTEM CLEANER
+# 12. POST-INSTALL CLEANUP
 # ==========================================
-CLEANER_DIR="$USER_HOME/.local/share/omarchy-cleaner"
-[[ ! -d "$CLEANER_DIR" ]] && git clone https://github.com/maxart/omarchy-cleaner "$CLEANER_DIR"
-[[ -f "$CLEANER_DIR/remove-bloat.sh" ]] && bash "$CLEANER_DIR/remove-bloat.sh"
+# Remove any unwanted default packages here
+# Example: sudo pacman -Rns --noconfirm <package> || true
 
 # ==========================================
 # DONE
