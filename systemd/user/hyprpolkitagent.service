@@ -1,0 +1,13 @@
+[Unit]
+Description=Hyprland polkit authentication agent
+Documentation=https://github.com/hyprwm/hyprpolkitagent
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/hyprpolkitagent
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

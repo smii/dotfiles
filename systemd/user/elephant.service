@@ -1,0 +1,14 @@
+[Unit]
+Description=Elephant desktop app data provider for Walker
+Documentation=https://github.com/abenz1267/elephant
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=elephant
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target

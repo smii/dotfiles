@@ -1,0 +1,161 @@
+# ── Shell & Core ──────────────────────────────────────────────────────────────
+zsh
+bash-completion
+starship
+zoxide
+fzf
+ripgrep
+fd
+bat
+eza
+gum
+wget
+curl
+git
+tmux
+btop
+fastfetch
+neofetch
+
+# ── Wayland / Hyprland ────────────────────────────────────────────────────────
+hyprland
+hyprlock
+hypridle
+hyprpicker
+hyprshot
+waybar
+mako
+walker
+cliphist
+swaybg
+swayosd
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+xdg-user-dirs
+wl-clipboard
+wlroots
+qt5-wayland
+qt6-wayland
+qt5ct
+qt6ct
+kvantum
+kvantum-qt5
+nwg-look
+
+# ── Audio ─────────────────────────────────────────────────────────────────────
+pipewire
+pipewire-alsa
+pipewire-pulse
+# pipewire-jack conflicts with jack2; install only if jack2 is absent
+# pipewire-jack
+wireplumber
+pamixer
+playerctl
+pavucontrol
+wiremix
+
+# ── Display & Notifications ───────────────────────────────────────────────────
+gammastep
+brightnessctl
+libnotify
+geoclue
+
+# ── Fonts ─────────────────────────────────────────────────────────────────────
+ttf-jetbrains-mono-nerd
+noto-fonts
+noto-fonts-emoji
+ttf-font-awesome
+
+# ── Terminals ─────────────────────────────────────────────────────────────────
+ghostty
+alacritty
+foot
+
+# ── File Management ───────────────────────────────────────────────────────────
+pcmanfm
+gvfs
+gvfs-smb
+tumbler
+file-roller
+7zip
+unzip
+zip
+
+# ── Editors ───────────────────────────────────────────────────────────────────
+neovim
+helix
+
+# ── Development ───────────────────────────────────────────────────────────────
+base-devel
+git
+github-cli
+lazygit
+lazydocker
+docker
+docker-compose
+docker-buildx
+python
+python-pip
+go
+mise
+uv
+
+# ── Networking ────────────────────────────────────────────────────────────────
+networkmanager
+network-manager-applet
+bluetui
+bluez
+bluez-utils
+
+# ── System Tools ──────────────────────────────────────────────────────────────
+hyprpolkitagent
+power-profiles-daemon
+uwsm
+fcitx5
+fcitx5-gtk
+fcitx5-qt
+fcitx5-configtool
+btrfs-assistant
+snapper
+ncdu
+htop
+inxi
+iptables
+nftables
+
+# ── Screen Capture ────────────────────────────────────────────────────────────
+gpu-screen-recorder-git
+grim
+slurp
+satty
+tesseract
+
+# ── Media ─────────────────────────────────────────────────────────────────────
+mpv
+swayimg
+vlc
+
+# ── Browser & Apps ────────────────────────────────────────────────────────────
+firefox
+chromium
+bitwarden
+obsidian
+signal-desktop
+qalculate-gtk
+
+# ── XDG & GTK ─────────────────────────────────────────────────────────────────
+xdg-utils
+gtk3
+gtk4
+libadwaita
+wlogout
+papirus-icon-theme
+# AUR: tokyonight-gtk-theme-git  (GTK3/4 theme for blueman, pcmanfm, etc.)
+# AUR: papirus-folders            (coloured folder icons, run: papirus-folders -C bluegrey --theme Papirus-Dark)
+
+# ── Miscellaneous ─────────────────────────────────────────────────────────────
+tmux
+jq
+yq
+man-db
+man-pages

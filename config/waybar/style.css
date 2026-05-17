@@ -1,0 +1,88 @@
+/* ── TokyoNight palette ────────────────────────────────────────────────────── */
+@define-color foreground   #a9b1d6;
+@define-color background   #1a1b26;
+@define-color accent       #7aa2f7;
+@define-color accent2      #bb9af7;
+@define-color red          #f7768e;
+@define-color brightblack  #444b6a;
+
+* {
+  background-color: @background;
+  color: @foreground;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 12px;
+}
+
+.modules-left  { margin-left:  8px; }
+.modules-right { margin-right: 8px; }
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
+  color: @foreground;
+}
+#workspaces button.empty   { opacity: 0.5; }
+#workspaces button.active  { color: @accent; font-weight: bold; }
+#workspaces button:hover   { background: alpha(@accent, 0.15); }
+
+#cpu,
+#custom-launcher,
+#custom-updates,
+#custom-gpu-temp {
+  min-width: 12px;
+  margin: 0 7.5px;
+}
+
+#tray          { margin-right: 16px; }
+#bluetooth     { margin-right: 17px; }
+#network       { margin-right: 13px; }
+#custom-expand-icon { margin-right: 18px; }
+
+tooltip { padding: 2px; }
+
+#custom-updates { font-size: 10px; }
+
+#clock { margin-left: 8.75px; }
+
+.hidden { opacity: 0; }
+
+#custom-screenrecording-indicator,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator,
+#custom-nightlight-indicator {
+  min-width: 12px;
+  margin-left: 5px;
+  margin-right: 0;
+  font-size: 10px;
+  padding-bottom: 1px;
+}
+
+#custom-screenrecording-indicator.active,
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: @red;
+}
+
+#custom-nightlight-indicator.active {
+  color: #e0af68;
+}
+
+#custom-gpu-temp {
+  color: @accent2;
+}
+
+#custom-weather {
+  margin-left: 7.5px;
+  margin-right: 7.5px;
+}
+
+#custom-weather.unavailable {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}

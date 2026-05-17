@@ -1,0 +1,79 @@
+# ─── Walker App Launcher ──────────────────────────────────────────────────────
+
+force_keyboard_focus = true
+selection_wrap       = true
+theme                = "tokyonight"
+hide_action_hints    = true
+# Close walker when clicking outside the window
+close_on_lose_focus  = true
+
+[placeholders]
+"default"   = { input = " Search...",     list = "No Results" }
+"files"     = { input = " Path...",        list = "No Results" }
+"windows"   = { input = " Window...",     list = "No matches" }
+"ssh"       = { input = " SSH host...",    list = "No hosts found" }
+"runner"    = { input = "! Command...",    list = "No Results" }
+"websearch" = { input = "@ Search web...", list = "" }
+
+[keybinds]
+quick_activate = []
+
+[columns]
+symbols = 1
+
+[providers]
+max_results = 128
+# windows provider only via % prefix or -m flag — NOT in defaults (causes elephant errors)
+default = [
+  "desktopapplications",
+  "websearch",
+]
+
+# / → list all providers
+[[providers.prefixes]]
+prefix   = "/"
+provider = "providerlist"
+
+# . → file browser
+[[providers.prefixes]]
+prefix   = "."
+provider = "files"
+
+# : → unicode symbols / emoji
+[[providers.prefixes]]
+prefix   = ":"
+provider = "symbols"
+
+# = → inline calculator
+[[providers.prefixes]]
+prefix   = "="
+provider = "calc"
+
+# @ → force web search
+[[providers.prefixes]]
+prefix   = "@"
+provider = "websearch"
+
+# $ → clipboard history (requires wl-clipboard or cliphist)
+[[providers.prefixes]]
+prefix   = "$"
+provider = "clipboard"
+
+# % → Hyprland window switcher
+[[providers.prefixes]]
+prefix   = "%"
+provider = "windows"
+
+# # → SSH hosts (reads ~/.ssh/config)
+[[providers.prefixes]]
+prefix   = "#"
+provider = "ssh"
+
+# ! → run arbitrary shell command
+[[providers.prefixes]]
+prefix   = "!"
+provider = "runner"
+
+[[emergencies]]
+text    = "Restart Walker"
+command = "pkill walker; walker &"

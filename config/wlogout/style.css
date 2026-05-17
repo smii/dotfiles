@@ -1,0 +1,48 @@
+/* ── wlogout — TokyoNight (CachyOS-style) ───────────────────────────────── */
+/* Invoke with: wlogout -b 3 -T 240 -B 240 -L 350 -R 350                    */
+
+* {
+  background-image: none;
+  font-family:      "JetBrainsMono Nerd Font", monospace;
+}
+
+window {
+  background-color: rgba(26, 27, 38, 0.92);
+}
+
+button {
+  color:               #a9b1d6;
+  background-color:    rgba(36, 40, 59, 0.75);
+  border-style:        solid;
+  border-width:        2px;
+  border-color:        rgba(122, 162, 247, 0.18);
+  border-radius:       16px;
+  background-repeat:   no-repeat;
+  background-position: center 32%;
+  background-size:     22%;
+  font-size:           13px;
+  letter-spacing:      0.05em;
+  margin:              12px;
+  padding-top:         80px;
+  transition:          background-color 0.15s ease,
+                       border-color     0.15s ease,
+                       color            0.15s ease,
+                       transform        0.10s ease;
+}
+
+button:focus,
+button:active,
+button:hover {
+  background-color: rgba(122, 162, 247, 0.18);
+  border-color:     #7aa2f7;
+  color:            #c0caf5;
+  outline-style:    none;
+  transform:        scale(1.04);
+}
+
+#lock      { background-image: url("/usr/share/wlogout/icons/lock.png"); }
+#logout    { background-image: url("/usr/share/wlogout/icons/logout.png"); }
+#suspend   { background-image: url("/usr/share/wlogout/icons/suspend.png"); }
+#hibernate { background-image: url("/usr/share/wlogout/icons/hibernate.png"); }
+#shutdown  { background-image: url("/usr/share/wlogout/icons/shutdown.png"); }
+#reboot    { background-image: url("/usr/share/wlogout/icons/reboot.png"); }

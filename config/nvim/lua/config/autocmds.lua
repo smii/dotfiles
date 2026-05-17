@@ -1,0 +1,2 @@
+-- Add custom autocmds here.
+-- Default LazyVim autocmds: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua

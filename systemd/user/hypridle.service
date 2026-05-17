@@ -1,0 +1,13 @@
+[Unit]
+Description=Hyprland idle daemon
+Documentation=https://github.com/hyprwm/hypridle
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=hypridle
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

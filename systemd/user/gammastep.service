@@ -1,0 +1,13 @@
+[Unit]
+Description=Gammastep night light daemon
+Documentation=https://gitlab.com/chinstrap/gammastep
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=gammastep-indicator
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

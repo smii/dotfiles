@@ -1,0 +1,12 @@
+[Unit]
+Description=SwayOSD OSD overlay server
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=swayosd-server
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

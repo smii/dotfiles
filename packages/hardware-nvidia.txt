@@ -1,0 +1,20 @@
+# ── NVIDIA + ROG Hardware ────────────────────────────────────────────────────
+# Only installed when install.sh detects an NVIDIA GPU (lsmod | grep nvidia).
+
+# NVIDIA Drivers (open-source kernel module, CachyOS preferred)
+nvidia-open-dkms
+nvidia-settings
+nvidia-utils
+lib32-nvidia-utils
+egl-wayland
+libva-nvidia-driver
+nvidia-container-toolkit
+
+# GPU Fan / Thermal Control
+coolercontrol
+
+# ROG Hardware (Crosshair VIII, Strix, etc.)
+ckb-next
+
+# Vulkan (NVIDIA uses icd-loader; radeon variant not needed)
+vulkan-radeon
