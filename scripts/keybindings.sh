@@ -64,7 +64,7 @@ page_keybindings() {
     body=$(build_bindings)
     local nav="$(printf '%-32s %s' '' '→ Installed Tools & Apps')"
     local sel
-    sel=$(printf '%s\n%s' "$body" "$nav" | walker "${W[@]}" -p "Keybindings…" 2>/dev/null)
+    sel=$(printf '%s\n%s' "$nav" "$body" | walker "${W[@]}" -p "Keybindings…" 2>/dev/null)
     [[ "$sel" == *"Installed Tools"* ]] && page_tools
 }
 

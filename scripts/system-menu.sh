@@ -51,13 +51,15 @@ show_main_menu() {
 
 # ── System ────────────────────────────────────────────────────────────────────
 show_system_menu() {
-    case $(menu "System" " Lock\n Suspend\n Reboot\n Shutdown\n Logout") in
-    *Lock)     loginctl lock-session ;;
-    *Suspend)  systemctl suspend ;;
-    *Reboot)   systemctl reboot ;;
-    *Shutdown) systemctl poweroff ;;
-    *Logout)   loginctl terminate-user "$USER" ;;
-    *)         back_to ;;
+    case $(menu "System" " Lock\n Suspend\n Reboot\n Shutdown\n Logout\n  Disk Usage\n  Snapshots") in
+    *Lock)      loginctl lock-session ;;
+    *Suspend)   systemctl suspend ;;
+    *Reboot)    systemctl reboot ;;
+    *Shutdown)  systemctl poweroff ;;
+    *Logout)    loginctl terminate-user "$USER" ;;
+    *Disk*)     tui_float "ncdu ~" ;;
+    *Snapshot*) btrfs-assistant & ;;
+    *)          back_to ;;
     esac
 }
 
@@ -131,11 +133,12 @@ show_config_menu() {
 
 # ── Network Tools ─────────────────────────────────────────────────────────────
 show_network_tools_menu() {
-    case $(menu "Network" "󰒍  Firewall (OpenSnitch)\n󰀺  Network Scan\n󰓮  IP Connections\n󰡨  Docker Layers") in
+    case $(menu "Network" "󰒍  Firewall (OpenSnitch)\n󰀺  Network Scan\n󰓮  IP Connections\n󰡨  Docker\n󰡨  Image Layers (dive)") in
     *Firewall*)      opensnitch-ui & ;;
     *Scan*)          tui_float "pkexec netscanner" ;;
     *Connections*)   tui_float "pkexec iptstate" ;;
-    *Docker*)        tui_float "dive" ;;
+    *Docker*)        ghostty --class=tui.lazydocker -e lazydocker & ;;
+    *Image*)         tui_float "dive" ;;
     *)               back_to ;;
     esac
 }
@@ -189,7 +192,7 @@ show_install_terminal_menu() {
 }
 
 show_install_dev_menu() {
-    case $(menu "Dev Env" "  Node.js\n  Python\n  Go\n  Ruby\n  Rust\n  Bun\n  Java\n  PHP\n  Elixir\n  Zig\n  .NET\n  Docker DBs") in
+    case $(menu "Dev Env" "  Node.js\n  Python\n  Go\n  Ruby\n  Rust\n  Bun\n  Java\n  PHP\n  Elixir\n  Zig\n  .NET\n  Docker DBs\n  lazygit") in
     *Node*)     in_terminal "mise use -g node@lts" ;;
     *Python*)   in_terminal "mise use -g python@latest" ;;
     *Go*)       in_terminal "mise use -g go@latest" ;;
@@ -202,6 +205,7 @@ show_install_dev_menu() {
     *Zig*)      in_terminal "mise use -g zig@latest" ;;
     *NET*)      in_terminal "mise use -g dotnet@latest" ;;
     *Docker*)   in_terminal "paru -S --needed postgresql redis mariadb" ;;
+    *lazygit*)  in_terminal "paru -S --needed lazygit" ;;
     *)          back_to show_install_menu ;;
     esac
 }
