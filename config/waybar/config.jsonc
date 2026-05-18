@@ -96,8 +96,7 @@
     "exec": "~/.config/waybar/scripts/hyprmon.sh",
     "return-type": "json",
     "interval": 10,
-    "on-click": "ghostty --class=hyprmon -e hyprmon -profiles",
-    "tooltip-format": "{tooltip}"
+    "on-click": "ghostty --class=hyprmon -e hyprmon -profiles"
   },
 
   "custom/gpu-temp": {
