@@ -132,8 +132,8 @@ fi
 
 # ─── Directories ──────────────────────────────────────────────────────────────
 info "Directories"
-mkdir -p ~/Pictures/Screenshots ~/Videos/Recordings
-ok "~/Pictures/Screenshots  ~/Videos/Recordings"
+mkdir -p ~/Pictures/Screenshots ~/Videos/Recordings ~/.local/share/applications
+ok "~/Pictures/Screenshots  ~/Videos/Recordings  ~/.local/share/applications"
 
 # ─── Chromium profiles ─────────────────────────────────────────────────────────
 info "Chromium profiles"

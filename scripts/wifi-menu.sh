@@ -37,7 +37,7 @@ connect_network() {
         | awk -F: -v s="$ssid" '$1==s {print $2; exit}')
     if [[ -n "$security" ]]; then
         # Prompt for password in a terminal
-        ghostty --class=tui-float --title="WiFi: $ssid" -e bash -c "
+        ghostty --class=tui.float --title="WiFi: $ssid" -e bash -c "
             echo 'Connecting to: $ssid'
             read -rsp 'Password: ' pass
             echo

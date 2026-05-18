@@ -25,7 +25,7 @@ in_terminal() {
 }
 
 tui_float() {
-    ghostty --class=tui-float -e bash -c "$*; echo; read -rp 'Press Enter to close'" &
+    ghostty --class=tui.float -e bash -c "$*; echo; read -rp 'Press Enter to close'" &
 }
 
 edit_file() {
@@ -78,8 +78,8 @@ show_toggle_menu() {
 show_setup_menu() {
     case $(menu "Setup" "  Audio\n  Wi-Fi\n󰂯  Bluetooth\n󱐋  Power Profile\n󰍹  Monitors\n  Fan Control") in
     *Audio*)     pavucontrol & ;;
-    *Wi-Fi*)     ghostty --class=tui-nmtui -e nmtui & ;;
-    *Bluetooth*) ghostty --class=tui-bluetui -e bluetui & ;;
+    *Wi-Fi*)     ghostty --class=tui.nmtui -e nmtui & ;;
+    *Bluetooth*) ghostty --class=tui.bluetui -e bluetui & ;;
     *Power*)     show_power_profile_menu ;;
     *Monitors*)  hyprmon -profiles & ;;
     *Fan*)       xdg-open http://localhost:11987 & ;;
@@ -142,7 +142,7 @@ show_network_tools_menu() {
 
 # ── Install ───────────────────────────────────────────────────────────────────
 show_install_menu() {
-    case $(menu "Install" "󰣇  Package\n  Browser\n  Editor\n  Terminal\n󰵮  Dev Env\n  Service\n󱚤  AI\n  Gaming\n  Remove") in
+    case $(menu "Install" "󰣇  Package\n  Browser\n  Editor\n  Terminal\n󰵮  Dev Env\n  Service\n󱚤  AI\n  Gaming\n󰖟  Web App\n  Remove") in
     *Package*)  in_terminal "paru" ;;
     *Browser*)  show_install_browser_menu ;;
     *Editor*)   show_install_editor_menu ;;
@@ -151,6 +151,7 @@ show_install_menu() {
     *Service*)  show_install_service_menu ;;
     *AI*)       show_install_ai_menu ;;
     *Gaming*)   show_install_gaming_menu ;;
+    *Web*)      ghostty --class=tui.float -e ~/.local/bin/webapp-launcher & ;;
     *Remove*)   show_remove_menu ;;
     *)          back_to ;;
     esac
