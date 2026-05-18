@@ -74,5 +74,9 @@ prefix   = "!"
 provider = "runner"
 
 [[emergencies]]
+text    = " Bitwarden"
+command = "bitwarden"
+
+[[emergencies]]
 text    = "Restart Walker"
 command = "pkill walker; walker &"

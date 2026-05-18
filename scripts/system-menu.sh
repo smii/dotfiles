@@ -127,10 +127,12 @@ show_config_menu() {
 
 # ── Network Tools ─────────────────────────────────────────────────────────────
 show_network_tools_menu() {
-    case $(menu "Network" "󰒍  Firewall (OpenSnitch)\n󰀺  Network Scan") in
-    *Firewall*)  opensnitch-ui & ;;
-    *Scan*)      in_terminal "pkexec netscanner" ;;
-    *)           back_to ;;
+    case $(menu "Network" "󰒍  Firewall (OpenSnitch)\n󰀺  Network Scan\n󰓮  IP Connections\n󰡨  Docker Layers") in
+    *Firewall*)      opensnitch-ui & ;;
+    *Scan*)          in_terminal "pkexec netscanner" ;;
+    *Connections*)   in_terminal "pkexec iptstate" ;;
+    *Docker*)        in_terminal "dive" ;;
+    *)               back_to ;;
     esac
 }
 
