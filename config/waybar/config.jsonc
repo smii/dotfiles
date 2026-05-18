@@ -113,12 +113,13 @@
     "format-wifi": "{icon}",
     "format-ethernet": "󰀂",
     "format-disconnected": "󰤮",
-    "tooltip-format-wifi": "{essid} ({frequency} GHz)",
-    "tooltip-format-ethernet": "Connected",
+    "tooltip-format-wifi": "{essid}  {signalStrength}%\n{ipaddr}",
+    "tooltip-format-ethernet": "{ifname}  {ipaddr}",
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "ghostty -e nmtui"
+    "on-click": "~/.local/bin/wifi-menu",
+    "on-click-right": "ghostty -e nmtui"
   },
 
   "bluetooth": {
@@ -127,8 +128,11 @@
     "format-disabled": "󰂲",
     "format-connected": "󰂱",
     "format-no-controller": "",
-    "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "ghostty -e bluetui"
+    "tooltip-format": "Bluetooth  {num_connections} connected",
+    "tooltip-format-connected": "{device_alias}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "on-click": "~/.local/bin/bluetooth-menu",
+    "on-click-right": "ghostty -e bluetui"
   },
 
   "pulseaudio": {
