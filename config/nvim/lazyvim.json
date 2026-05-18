@@ -1,5 +1,9 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.editor.neo-tree"
-  ]
+    "lazyvim.plugins.extras.lazyvim.plugins.extras.editor.neo-tree"
+  ],
+  "news": {
+    "NEWS.md": "11866"
+  },
+  "version": 8
 }
