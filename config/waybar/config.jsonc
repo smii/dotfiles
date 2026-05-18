@@ -9,11 +9,11 @@
   "modules-center": ["clock", "custom/weather", "mpris", "custom/updates", "custom/screenrecording-indicator", "custom/idle-indicator", "custom/notification-silencing-indicator", "custom/nightlight-indicator"],
   "modules-right": [
     "group/tray-expander",
+    "battery",
+    "power-profiles-daemon",
     "bluetooth",
     "network",
-    "battery",
     "pulseaudio",
-    "power-profiles-daemon",
     "custom/hyprmon",
     "memory",
     "temperature",
@@ -44,10 +44,10 @@
   },
 
   "custom/launcher": {
-    "format": "",
+    "format": "󰣇",
     "on-click": "walker",
-    "on-click-right": "ghostty",
-    "tooltip-format": "App Launcher  Super+Space"
+    "on-click-right": "~/.local/bin/system-menu",
+    "tooltip-format": "Launcher  Super+Space\nSystem Menu  Super+Alt+Space\nTerminal  Super+Enter\nBrowser  Super+Shift+Enter"
   },
 
   "custom/updates": {
@@ -96,7 +96,7 @@
     "exec": "~/.config/waybar/scripts/hyprmon.sh",
     "return-type": "json",
     "interval": 10,
-    "on-click": "hyprmon -profiles",
+    "on-click": "ghostty --class=hyprmon -e hyprmon -profiles",
     "tooltip-format": "{tooltip}"
   },
 
