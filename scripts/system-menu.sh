@@ -24,6 +24,10 @@ in_terminal() {
     ghostty -e bash -c "$*; echo; read -rp 'Press Enter to close'" &
 }
 
+tui_float() {
+    ghostty --class=tui-float -e bash -c "$*; echo; read -rp 'Press Enter to close'" &
+}
+
 edit_file() {
     ghostty -e nvim "$1" &
 }
@@ -74,8 +78,8 @@ show_toggle_menu() {
 show_setup_menu() {
     case $(menu "Setup" "  Audio\n  Wi-Fi\n󰂯  Bluetooth\n󱐋  Power Profile\n󰍹  Monitors\n  Fan Control") in
     *Audio*)     pavucontrol & ;;
-    *Wi-Fi*)     ghostty -e nmtui & ;;
-    *Bluetooth*) ghostty -e bluetui & ;;
+    *Wi-Fi*)     ghostty --class=tui-nmtui -e nmtui & ;;
+    *Bluetooth*) ghostty --class=tui-bluetui -e bluetui & ;;
     *Power*)     show_power_profile_menu ;;
     *Monitors*)  hyprmon -profiles & ;;
     *Fan*)       xdg-open http://localhost:11987 & ;;
@@ -129,9 +133,9 @@ show_config_menu() {
 show_network_tools_menu() {
     case $(menu "Network" "󰒍  Firewall (OpenSnitch)\n󰀺  Network Scan\n󰓮  IP Connections\n󰡨  Docker Layers") in
     *Firewall*)      opensnitch-ui & ;;
-    *Scan*)          in_terminal "pkexec netscanner" ;;
-    *Connections*)   in_terminal "pkexec iptstate" ;;
-    *Docker*)        in_terminal "dive" ;;
+    *Scan*)          tui_float "pkexec netscanner" ;;
+    *Connections*)   tui_float "pkexec iptstate" ;;
+    *Docker*)        tui_float "dive" ;;
     *)               back_to ;;
     esac
 }
