@@ -6,21 +6,25 @@
   "height": 26,
 
   "modules-left": ["custom/launcher", "hyprland/workspaces"],
-  "modules-center": ["clock", "custom/weather", "custom/updates", "custom/screenrecording-indicator", "custom/idle-indicator", "custom/notification-silencing-indicator", "custom/nightlight-indicator"],
+  "modules-center": ["clock", "custom/weather", "mpris", "custom/updates", "custom/screenrecording-indicator", "custom/idle-indicator", "custom/notification-silencing-indicator", "custom/nightlight-indicator"],
   "modules-right": [
     "group/tray-expander",
     "bluetooth",
     "network",
+    "battery",
     "pulseaudio",
     "power-profiles-daemon",
     "custom/hyprmon",
+    "memory",
+    "temperature",
     "custom/gpu-temp",
     "cpu"
   ],
 
   "hyprland/workspaces": {
     "on-click": "activate",
-    "format": "{icon}",
+    "format": "{icon}{windows}",
+    "format-window-separator": "",
     "format-icons": {
       "default": "",
       "1":  "1", "2":  "2", "3":  "3", "4":  "4", "5":  "5",
@@ -29,6 +33,13 @@
     },
     "persistent-workspaces": {
       "1": [], "2": [], "3": [], "4": [], "5": []
+    },
+    "workspace-taskbar": {
+      "enable": true,
+      "update-active-window": true,
+      "format": "{icon}",
+      "icon-size": 14,
+      "on-click-window": "~/.local/bin/window-focus {address} {button}"
     }
   },
 
@@ -185,5 +196,44 @@
   "tray": {
     "icon-size": 12,
     "spacing": 17
+  },
+
+  "battery": {
+    "interval": 30,
+    "format": "{icon}",
+    "format-charging": "󰂄",
+    "format-full": "󰁹",
+    "tooltip-format": "Battery: {capacity}% {timeTo}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
+  },
+
+  "memory": {
+    "interval": 10,
+    "format": "󰘚",
+    "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G",
+    "on-click": "ghostty -e btop"
+  },
+
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+    "interval": 5,
+    "format": "󰔄",
+    "critical-threshold": 80,
+    "format-critical": "󰔄",
+    "tooltip-format": "CPU: {temperatureC}°C"
+  },
+
+  "mpris": {
+    "format": "󰝚",
+    "format-paused": "󰝚",
+    "tooltip-format": "{player}: {title} — {artist}",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "interval": 3,
+    "ignored-players": ["chromium", "firefox"]
   }
 }
