@@ -107,6 +107,12 @@ bluetui
 bluez
 bluez-utils
 
+# ── Network & Security Tools ───────────────────────────────────────────────────
+opensnitch
+netscanner
+iptstate
+dive
+
 # ── System Tools ──────────────────────────────────────────────────────────────
 hyprpolkitagent
 power-profiles-daemon
@@ -139,9 +145,12 @@ vlc
 firefox
 chromium
 bitwarden
+bitwarden-cli
 obsidian
 signal-desktop
 qalculate-gtk
+# AUR: spotify (see aur.txt)
+# AUR: visual-studio-code-bin (see aur.txt)
 
 # ── XDG & GTK ─────────────────────────────────────────────────────────────────
 xdg-utils
