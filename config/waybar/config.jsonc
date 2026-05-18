@@ -13,6 +13,7 @@
     "network",
     "pulseaudio",
     "power-profiles-daemon",
+    "custom/hyprmon",
     "custom/gpu-temp",
     "cpu"
   ],
@@ -78,6 +79,14 @@
       "power-saver": "󰾆"
     },
     "on-click": "~/.local/bin/system-menu setup"
+  },
+
+  "custom/hyprmon": {
+    "exec": "~/.config/waybar/scripts/hyprmon.sh",
+    "return-type": "json",
+    "interval": 10,
+    "on-click": "hyprmon -profiles",
+    "tooltip-format": "{tooltip}"
   },
 
   "custom/gpu-temp": {

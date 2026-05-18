@@ -34,13 +34,14 @@ notify() {
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 show_main_menu() {
-    case $(menu "CachyOS" "  System\n󰍹  Toggles\n  Setup\n  Capture\n  Config\n  Install") in
+    case $(menu "CachyOS" "  System\n󰍹  Toggles\n  Setup\n  Capture\n  Config\n  Install\n󰛳  Network") in
     *System*)   show_system_menu ;;
     *Toggles*)  show_toggle_menu ;;
     *Setup*)    show_setup_menu ;;
     *Capture*)  show_capture_menu ;;
     *Config*)   show_config_menu ;;
     *Install*)  show_install_menu ;;
+    *Network*)  show_network_tools_menu ;;
     esac
 }
 
@@ -76,7 +77,7 @@ show_setup_menu() {
     *Wi-Fi*)     ghostty -e nmtui & ;;
     *Bluetooth*) ghostty -e bluetui & ;;
     *Power*)     show_power_profile_menu ;;
-    *Monitors*)  show_monitors_menu ;;
+    *Monitors*)  hyprmon -profiles & ;;
     *Fan*)       xdg-open http://localhost:11987 & ;;
     *)           back_to ;;
     esac
@@ -96,16 +97,6 @@ show_power_profile_menu() {
     fi
 }
 
-show_monitors_menu() {
-    case $(menu "Monitors" "󰍹  Switch Profile\n  Edit Config\n  Reload Hyprland") in
-    *Profile*) hyprmon -list-profiles 2>/dev/null | \
-                   walker --dmenu -p "Monitor Profile…" --width 295 --maxheight 200 2>/dev/null | \
-                   xargs -I{} hyprmon -profile {} ;;
-    *Edit*)    edit_file ~/.config/hypr/monitors.conf ;;
-    *Reload*)  hyprctl reload && notify "Hyprland" "Config reloaded" ;;
-    *)         back_to show_setup_menu ;;
-    esac
-}
 
 # ── Capture ───────────────────────────────────────────────────────────────────
 show_capture_menu() {
@@ -130,6 +121,15 @@ show_config_menu() {
     *Walker*)    edit_file ~/.config/walker/config.toml ;;
     *Gammastep*) edit_file ~/.config/gammastep/config.ini ;;
     *Ghostty*)   edit_file ~/.config/ghostty/config ;;
+    *)           back_to ;;
+    esac
+}
+
+# ── Network Tools ─────────────────────────────────────────────────────────────
+show_network_tools_menu() {
+    case $(menu "Network" "󰒍  Firewall (OpenSnitch)\n󰀺  Network Scan") in
+    *Firewall*)  opensnitch-ui & ;;
+    *Scan*)      in_terminal "pkexec netscanner" ;;
     *)           back_to ;;
     esac
 }
@@ -252,5 +252,6 @@ setup)    BACK_TO_EXIT=true; show_setup_menu ;;
 capture)  BACK_TO_EXIT=true; show_capture_menu ;;
 config)   BACK_TO_EXIT=true; show_config_menu ;;
 install)  BACK_TO_EXIT=true; show_install_menu ;;
+network)  BACK_TO_EXIT=true; show_network_tools_menu ;;
 *)        show_main_menu ;;
 esac
