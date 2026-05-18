@@ -33,14 +33,20 @@
 #cpu,
 #custom-launcher,
 #custom-updates,
-#custom-gpu-temp {
+#custom-gpu-temp,
+#power-profiles-daemon {
   min-width: 12px;
   margin: 0 7.5px;
 }
 
+#power-profiles-daemon.performance { color: @red; }
+#power-profiles-daemon.balanced    { color: @accent; }
+#power-profiles-daemon.power-saver { color: #9ece6a; }
+
 #tray          { margin-right: 16px; }
 #bluetooth     { margin-right: 17px; }
 #network       { margin-right: 13px; }
+#pulseaudio    { margin-right: 13px; }
 #custom-expand-icon { margin-right: 18px; }
 
 tooltip { padding: 2px; }

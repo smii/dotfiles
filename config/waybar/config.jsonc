@@ -12,6 +12,7 @@
     "bluetooth",
     "network",
     "pulseaudio",
+    "power-profiles-daemon",
     "custom/gpu-temp",
     "cpu"
   ],
@@ -65,6 +66,18 @@
     "interval": 60,
     "tooltip": false,
     "on-click": "notify-send -u low \"$(curl -s 'wttr.in?format=3')\""
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}",
+    "format-icons": {
+      "default":     "󰾅",
+      "performance": "󰓅",
+      "balanced":    "󰾅",
+      "power-saver": "󰾆"
+    },
+    "on-click": "~/.local/bin/system-menu setup"
   },
 
   "custom/gpu-temp": {
