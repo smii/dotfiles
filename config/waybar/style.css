@@ -70,7 +70,7 @@
 #tray          { margin-right: 16px; }
 #bluetooth     { margin-right: 17px; }
 #network       { margin-right: 13px; }
-#battery       { margin-right: 13px; }
+#battery       { margin: 0 7.5px; }
 #pulseaudio    { margin-right: 13px; }
 #custom-expand-icon { margin-right: 18px; }
 

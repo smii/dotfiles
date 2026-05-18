@@ -60,7 +60,7 @@ SETTINGS_ITEM="󰒍  Network settings (nmtui)"
 
 entries="$HEADER\n$SEPARATOR\n$(build_list)\n$SEPARATOR\n$DISCONNECT_ITEM\n$SETTINGS_ITEM"
 
-selected=$(printf '%b' "$entries" | walker --dmenu --label "WiFi" --width 380 --height 400)
+selected=$(printf '%b' "$entries" | walker --dmenu --placeholder "WiFi" --width 280 --height 280)
 
 [[ -z "$selected" ]] && exit 0
 

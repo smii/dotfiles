@@ -43,7 +43,7 @@ SETTINGS_ITEM="󰒍  Open bluetui"
 
 if ! bt_powered; then
     entries="$HEADER\n$SEPARATOR\n$TOGGLE_ON_ITEM\n$SETTINGS_ITEM"
-    selected=$(printf '%b' "$entries" | walker --dmenu --label "Bluetooth" --width 340 --height 200)
+    selected=$(printf '%b' "$entries" | walker --dmenu --placeholder "Bluetooth" --width 260 --height 150)
     case "$selected" in
         "$TOGGLE_ON_ITEM") bluetoothctl power on; notify-send -u low "Bluetooth" "Turned on" ;;
         "$SETTINGS_ITEM")  ghostty -e bluetui ;;
@@ -56,7 +56,7 @@ entries="$HEADER\n$SEPARATOR"
 [[ -n "$device_list" ]] && entries+="\n$device_list"
 entries+="\n$SEPARATOR\n$SCAN_ITEM\n$TOGGLE_OFF_ITEM\n$SETTINGS_ITEM"
 
-selected=$(printf '%b' "$entries" | walker --dmenu --label "Bluetooth" --width 380 --height 360)
+selected=$(printf '%b' "$entries" | walker --dmenu --placeholder "Bluetooth" --width 260 --height 260)
 
 [[ -z "$selected" ]] && exit 0
 
