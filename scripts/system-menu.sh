@@ -38,8 +38,8 @@ notify() {
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 show_main_menu() {
-    case $(menu "CachyOS" "  System\n󰍹  Toggles\n  Setup\n  Capture\n  Config\n  Install\n󰛳  Network") in
-    *Setup*)    show_setup_menu ;;;
+    case $(menu "CachyOS" "󰒓  System\n󰍹  Toggles\n󱁤  Setup\n󰄀  Capture\n󰓼  Config\n󰐧  Install\n󰛳  Network") in
+    *Setup*)    show_setup_menu ;;
     *Config*)   show_config_menu ;;
     *Install*)  show_install_menu ;;
     *Toggles*)  show_toggle_menu ;;
@@ -51,7 +51,7 @@ show_main_menu() {
 
 # ── System ────────────────────────────────────────────────────────────────────
 show_system_menu() {
-    case $(menu "System" " Lock\n Suspend\n Reboot\n Shutdown\n Logout\n  Disk Usage\n  Snapshots") in
+    case $(menu "System" " 🔒 Lock\n 🌙 Suspend\n 🔄 Reboot\n ⚡ Shutdown\n 🚪 Logout\n 💾 Disk Usage\n 📸 Snapshots") in
     *Lock)      loginctl lock-session ;;
     *Suspend)   systemctl suspend ;;
     *Reboot)    systemctl reboot ;;
