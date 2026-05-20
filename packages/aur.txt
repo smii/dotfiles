@@ -1,0 +1,22 @@
+# AUR packages — installed via paru
+# Run: paru -S --needed - < aur.txt
+
+# GTK theming
+tokyonight-gtk-theme-git
+papirus-folders
+
+# Monitor management
+hyprmon-bin
+
+# Editors
+visual-studio-code-bin
+
+# Media
+spotify
+
+
+# Elepahnt for Walker
+elephant-all
+
+# Screen capture (gpu-screen-recorder may appear here on non-CachyOS)
+# gpu-screen-recorder-git

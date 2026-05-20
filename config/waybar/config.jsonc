@@ -6,19 +6,25 @@
   "height": 26,
 
   "modules-left": ["custom/launcher", "hyprland/workspaces"],
-  "modules-center": ["clock", "custom/weather", "custom/updates", "custom/screenrecording-indicator", "custom/idle-indicator", "custom/notification-silencing-indicator", "custom/nightlight-indicator"],
+  "modules-center": ["clock", "custom/weather", "mpris", "custom/updates", "custom/screenrecording-indicator", "custom/idle-indicator", "custom/notification-silencing-indicator", "custom/nightlight-indicator"],
   "modules-right": [
     "group/tray-expander",
     "bluetooth",
     "network",
     "pulseaudio",
+    "custom/hyprmon",
+    "memory",
+    "temperature",
     "custom/gpu-temp",
+    "power-profiles-daemon",
+    "battery",
     "cpu"
   ],
 
   "hyprland/workspaces": {
     "on-click": "activate",
-    "format": "{icon}",
+    "format": "{icon}{windows}",
+    "format-window-separator": "",
     "format-icons": {
       "default": "",
       "1":  "1", "2":  "2", "3":  "3", "4":  "4", "5":  "5",
@@ -27,14 +33,21 @@
     },
     "persistent-workspaces": {
       "1": [], "2": [], "3": [], "4": [], "5": []
+    },
+    "workspace-taskbar": {
+      "enable": true,
+      "update-active-window": true,
+      "format": "{icon}",
+      "icon-size": 14,
+      "on-click-window": "~/.local/bin/window-focus {address} {button}"
     }
   },
 
   "custom/launcher": {
-    "format": "",
+    "format": "󰣇",
     "on-click": "walker",
-    "on-click-right": "ghostty",
-    "tooltip-format": "App Launcher  Super+Space"
+    "on-click-right": "~/.local/bin/system-menu",
+    "tooltip-format": "Launcher  Super+Space\nSystem Menu  Super+Alt+Space\nTerminal  Super+Enter\nBrowser  Super+Shift+Enter"
   },
 
   "custom/updates": {
@@ -49,7 +62,7 @@
   "cpu": {
     "interval": 5,
     "format": "󰍛",
-    "on-click": "ghostty -e btop",
+    "on-click": "ghostty --class=tui.btop -e btop",
     "on-click-right": "ghostty"
   },
 
@@ -67,11 +80,30 @@
     "on-click": "notify-send -u low \"$(curl -s 'wttr.in?format=3')\""
   },
 
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}",
+    "format-icons": {
+      "default":     "󰾅",
+      "performance": "󰓅",
+      "balanced":    "󰾅",
+      "power-saver": "󰾆"
+    },
+    "on-click": "~/.local/bin/system-menu setup"
+  },
+
+  "custom/hyprmon": {
+    "exec": "~/.config/waybar/scripts/hyprmon.sh",
+    "return-type": "json",
+    "interval": 10,
+    "on-click": "ghostty --class=hyprmon -e hyprmon -profiles"
+  },
+
   "custom/gpu-temp": {
     "exec": "~/.config/waybar/scripts/gpu-temp.sh",
     "return-type": "json",
     "interval": 5,
-    "on-click": "ghostty -e btop",
+    "on-click": "ghostty --class=tui.btop -e btop",
     "tooltip-format": "RTX 3080 temperature"
   },
 
@@ -81,22 +113,26 @@
     "format-wifi": "{icon}",
     "format-ethernet": "󰀂",
     "format-disconnected": "󰤮",
-    "tooltip-format-wifi": "{essid} ({frequency} GHz)",
-    "tooltip-format-ethernet": "Connected",
+    "tooltip-format-wifi": "{essid}  {signalStrength}%\n{ipaddr}",
+    "tooltip-format-ethernet": "{ifname}  {ipaddr}",
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "ghostty -e nmtui"
+    "on-click": "~/.local/bin/wifi-menu",
+    "on-click-right": "ghostty -e nmtui"
   },
 
   "bluetooth": {
-    "format": "",
+    "format": "󰂯",
     "format-off": "󰂲",
     "format-disabled": "󰂲",
     "format-connected": "󰂱",
     "format-no-controller": "",
-    "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "ghostty -e bluetui"
+    "tooltip-format": "Bluetooth  {num_connections} connected",
+    "tooltip-format-connected": "{device_alias}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "on-click": "~/.local/bin/bluetooth-menu",
+    "on-click-right": "ghostty -e bluetui"
   },
 
   "pulseaudio": {
@@ -163,5 +199,44 @@
   "tray": {
     "icon-size": 12,
     "spacing": 17
+  },
+
+  "battery": {
+    "interval": 30,
+    "format": "{icon}",
+    "format-charging": "󰂄",
+    "format-full": "󰁹",
+    "tooltip-format": "Battery: {capacity}% {timeTo}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
+  },
+
+  "memory": {
+    "interval": 10,
+    "format": "󰘚",
+    "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G",
+    "on-click": "ghostty --class=tui.btop -e btop"
+  },
+
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+    "interval": 5,
+    "format": "󰔄",
+    "critical-threshold": 80,
+    "format-critical": "󰔄",
+    "tooltip-format": "CPU: {temperatureC}°C"
+  },
+
+  "mpris": {
+    "format": "󰝚",
+    "format-paused": "󰝚",
+    "tooltip-format": "{player}: {title} — {artist}",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "interval": 3,
+    "ignored-players": ["chromium", "firefox"]
   }
 }

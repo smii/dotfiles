@@ -30,17 +30,48 @@
 #workspaces button.active  { color: @accent; font-weight: bold; }
 #workspaces button:hover   { background: alpha(@accent, 0.15); }
 
+#workspaces button .taskbar-item {
+  padding: 0 2px;
+  margin-left: 2px;
+  min-width: 0;
+  font-size: 11px;
+  opacity: 0.75;
+}
+#workspaces button .taskbar-item.active {
+  opacity: 1;
+  color: @accent;
+}
+
 #cpu,
+#memory,
+#temperature,
 #custom-launcher,
 #custom-updates,
-#custom-gpu-temp {
+#custom-gpu-temp,
+#custom-hyprmon,
+#power-profiles-daemon {
   min-width: 12px;
   margin: 0 7.5px;
 }
 
+#battery.warning  { color: #e0af68; }
+#battery.critical { color: @red; }
+#battery.charging { color: #9ece6a; }
+
+#temperature.critical { color: @red; }
+
+#mpris        { margin-left: 7.5px; opacity: 1; }
+#mpris.paused { opacity: 0.4; }
+
+#power-profiles-daemon.performance { color: @red; }
+#power-profiles-daemon.balanced    { color: @accent; }
+#power-profiles-daemon.power-saver { color: #9ece6a; }
+
 #tray          { margin-right: 16px; }
 #bluetooth     { margin-right: 17px; }
 #network       { margin-right: 13px; }
+#battery       { margin: 0 7.5px; }
+#pulseaudio    { margin-right: 13px; }
 #custom-expand-icon { margin-right: 18px; }
 
 tooltip { padding: 2px; }
