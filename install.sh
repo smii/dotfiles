@@ -66,10 +66,12 @@ ok "scripts → $BIN"
 
 # ─── systemd user services ────────────────────────────────────────────────────
 info "Systemd user services"
+
+elephant service enable
 mkdir -p "$CONFIG/systemd/user"
 cp "$DOTFILES/systemd/user/"*.service "$CONFIG/systemd/user/"
 systemctl --user daemon-reload
-for svc in waybar mako hypridle swayosd-server swaybg hyprpolkitagent gammastep walker; do
+for svc in waybar mako hypridle swayosd-server swaybg hyprpolkitagent gammastep elephant walker; do
     systemctl --user enable --now "$svc" 2>/dev/null && ok "$svc enabled" || warn "$svc not found (skip)"
 done
 

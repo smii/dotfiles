@@ -39,13 +39,13 @@ notify() {
 # ── Main ──────────────────────────────────────────────────────────────────────
 show_main_menu() {
     case $(menu "CachyOS" "  System\n󰍹  Toggles\n  Setup\n  Capture\n  Config\n  Install\n󰛳  Network") in
-    *System*)   show_system_menu ;;
-    *Toggles*)  show_toggle_menu ;;
-    *Setup*)    show_setup_menu ;;
-    *Capture*)  show_capture_menu ;;
+    *Setup*)    show_setup_menu ;;;
     *Config*)   show_config_menu ;;
     *Install*)  show_install_menu ;;
+    *Toggles*)  show_toggle_menu ;;
+    *Capture*)  show_capture_menu ;;
     *Network*)  show_network_tools_menu ;;
+    *System*)   show_system_menu ;;    
     esac
 }
 

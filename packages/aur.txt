@@ -14,5 +14,9 @@ visual-studio-code-bin
 # Media
 spotify
 
+
+# Elepahnt for Walker
+elephant-all
+
 # Screen capture (gpu-screen-recorder may appear here on non-CachyOS)
 # gpu-screen-recorder-git
