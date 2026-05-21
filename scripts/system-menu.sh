@@ -65,7 +65,7 @@ show_system_menu() {
 
 # ── Toggles ───────────────────────────────────────────────────────────────────
 show_toggle_menu() {
-    case $(menu "Toggle" "󰔎  Nightlight\n󱫖  Idle Lock\n󰂛  Notifications\n󰍜  Top Bar\n  Window Gaps\n  Transparency") in
+case $(menu "Toggle" "󰔎  Nightlight\n󱫖  Idle Lock\n󰂛  Notifications\n󰍜  Top Bar\n󰖯  Window Gaps\n󰂵  Transparency") in
     *Nightlight*)    ~/.local/bin/nightlight-toggle ;;
     *Idle*)          ~/.local/bin/idle-toggle ;;
     *Notifications*) ~/.local/bin/notification-silencing-toggle ;;
@@ -78,7 +78,7 @@ show_toggle_menu() {
 
 # ── Setup ─────────────────────────────────────────────────────────────────────
 show_setup_menu() {
-    case $(menu "Setup" "  Audio\n  Wi-Fi\n󰂯  Bluetooth\n󱐋  Power Profile\n󰍹  Monitors\n  Fan Control") in
+    case $(menu "Setup" "󰓃  Audio\n󰖩  Wi-Fi\n󰂯  Bluetooth\n󱐋  Power Profile\n󰍹  Monitors\n󰈐  Fan Control") in
     *Audio*)     pavucontrol & ;;
     *Wi-Fi*)     ghostty --class=tui.nmtui -e nmtui & ;;
     *Bluetooth*) ghostty --class=tui.bluetui -e bluetui & ;;
@@ -106,8 +106,7 @@ show_power_profile_menu() {
 
 # ── Capture ───────────────────────────────────────────────────────────────────
 show_capture_menu() {
-    case $(menu "Capture" "  Screenshot\n  Screenrecord\n󰴑  Extract Text (OCR)\n󰃉  Color Picker") in
-    *Screenshot*)  ~/.local/bin/screenshot ;;
+    case $(menu "Capture" "󰄀  Screenshot\n󰑋  Screenrecord\n󰴑  Extract Text (OCR)\n󰃉  Color Picker") in    *Screenshot*)  ~/.local/bin/screenshot ;;
     *Screenrecord*) ~/.local/bin/screenrecord-toggle ;;
     *OCR*)         hyprshot -m region -o /tmp/ocr.png 2>/dev/null && \
                        tesseract /tmp/ocr.png stdout 2>/dev/null | wl-copy && \
@@ -119,7 +118,7 @@ show_capture_menu() {
 
 # ── Config ────────────────────────────────────────────────────────────────────
 show_config_menu() {
-    case $(menu "Config" "  Hyprland\n  Bindings\n  Hypridle\n  Waybar\n  Walker\n  Gammastep\n  Ghostty") in
+    case $(menu "Config" "  Hyprland\n󰘳  Bindings\n󰒲  Hypridle\n󱑙  Waybar\n󰇥  Walker\n󰖔  Gammastep\n󰞷  Ghostty") in
     *Hyprland*)  edit_file ~/.config/hypr/hyprland.conf ;;
     *Bindings*)  edit_file ~/.config/hypr/bindings.conf ;;
     *Hypridle*)  edit_file ~/.config/hypr/hypridle.conf ;;
@@ -145,7 +144,7 @@ show_network_tools_menu() {
 
 # ── Install ───────────────────────────────────────────────────────────────────
 show_install_menu() {
-    case $(menu "Install" "󰣇  Package\n  Browser\n  Editor\n  Terminal\n󰵮  Dev Env\n  Service\n󱚤  AI\n  Gaming\n󰖟  Web App\n  Remove") in
+    case $(menu "Install" "󰣇  Package\n󰓈  Browser\n󰘫  Editor\n󰞯  Terminal\n󰵮  Dev Env\n󰛦  Service\n󱚤  AI\n󰕧  Gaming\n󰖟  Web App\n󰗼  Remove") in
     *Package*)  in_terminal "paru" ;;
     *Browser*)  show_install_browser_menu ;;
     *Editor*)   show_install_editor_menu ;;
